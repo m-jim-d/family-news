@@ -1,0 +1,1 @@
+note that the 2019 files are on dropbox, in the newsletters folder
