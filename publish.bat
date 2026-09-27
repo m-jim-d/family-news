@@ -24,7 +24,7 @@ IF %help%==on (
    IF %copy%==on (
       robocopy C:\Users\Jim\Documents\webcontent\jimandlaurie.50webs  C:\Users\Jim\Documents\webcontent\github-website\family-news ^
                   /XD .git ^
-                  /XF publish.bat init.bat .gitignore README.md sermon.doc session* *workspace ^
+                  /XF publish.bat init.bat .gitignore README.md readme.txt sermon.doc session* *workspace ^
                   /MIR /R:3 /W:5
    ) ELSE (
       ECHO(
