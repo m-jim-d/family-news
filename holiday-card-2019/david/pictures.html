@@ -678,5 +678,19 @@
          });
       });
    </script>
+   <script>
+      function logEntryToWorker(eventDescription, mode = 'normal') {
+         const workerURL = 'https://triquence.org/pvent';
+         const payload = { mode: mode, eventDesc: eventDescription };
+
+         fetch(workerURL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+         }).catch(err => console.error('log failed:', err));
+      }
+
+      logEntryToWorker('our-David-photos');
+   </script>
 </body>
 </html>
