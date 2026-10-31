@@ -105,7 +105,7 @@ nav {
 
 .lightbox-overlay img {
    max-width: 90vw;
-   max-height: 85vh;
+   max-height: 95vh;
    object-fit: contain;
 }
 
