@@ -120,10 +120,12 @@ nav {
 .lightbox-prev,
 .lightbox-next {
    position: absolute;
+   z-index: 10;
    color: white;
    cursor: pointer;
-   background: none;
+   background: rgba(0, 0, 0, 0.45);
    border: none;
+   border-radius: 50%;
    user-select: none;
 }
 
@@ -138,12 +140,15 @@ nav {
 .lightbox-next {
    top: 50%;
    transform: translateY(-50%);
+   width: 3rem;
+   height: 3rem;
    font-size: 2.5rem;
-   padding: 0.5rem;
+   line-height: 1;
+   padding: 0;
 }
 
-.lightbox-prev { left: 1rem; }
-.lightbox-next { right: 1rem; }
+.lightbox-prev { left: max(0.5rem, env(safe-area-inset-left)); }
+.lightbox-next { right: max(0.5rem, env(safe-area-inset-right)); }
 
 .lightbox-prev:hover,
 .lightbox-next:hover,
