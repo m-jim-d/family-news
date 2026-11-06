@@ -130,10 +130,6 @@ nav {
    transition: opacity 0.3s;
 }
 
-.lightbox-caption {
-   transition: opacity 0.3s;
-}
-
 .lightbox-overlay.idle,
 .lightbox-overlay.idle img {
    cursor: none !important;
@@ -141,8 +137,7 @@ nav {
 
 .lightbox-overlay.idle .lightbox-close,
 .lightbox-overlay.idle .lightbox-prev,
-.lightbox-overlay.idle .lightbox-next,
-.lightbox-overlay.idle .lightbox-caption {
+.lightbox-overlay.idle .lightbox-next {
    opacity: 0;
    pointer-events: none;
 }
