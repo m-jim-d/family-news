@@ -127,6 +127,24 @@ nav {
    border: none;
    border-radius: 50%;
    user-select: none;
+   transition: opacity 0.3s;
+}
+
+.lightbox-caption {
+   transition: opacity 0.3s;
+}
+
+.lightbox-overlay.idle,
+.lightbox-overlay.idle img {
+   cursor: none !important;
+}
+
+.lightbox-overlay.idle .lightbox-close,
+.lightbox-overlay.idle .lightbox-prev,
+.lightbox-overlay.idle .lightbox-next,
+.lightbox-overlay.idle .lightbox-caption {
+   opacity: 0;
+   pointer-events: none;
 }
 
 .lightbox-close {
@@ -154,6 +172,13 @@ nav {
 .lightbox-next:hover,
 .lightbox-close:hover {
    color: #ccc;
+}
+
+@media (hover: none) {
+   .lightbox-prev,
+   .lightbox-next {
+      display: none;
+   }
 }
 
 @media (max-width: 600px) {
