@@ -52,6 +52,7 @@ items.forEach((item, index) => {
 
 if (overlay) {
    overlay.addEventListener('click', event => {
+      resetIdleTimer();
       if (event.target === overlay) closeLightbox();
    });
    overlay.addEventListener('mousemove', resetIdleTimer);
