@@ -1,3 +1,9 @@
+(() => {
+   const script = document.createElement('script');
+   script.src = new URL('tree-overlay.js', document.currentScript.src).href;
+   document.head.append(script);
+})();
+
 const items = Array.from(document.querySelectorAll('.gallery-item'));
 const overlay = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightbox-img');
