@@ -5,6 +5,9 @@
 })();
 
 const items = Array.from(document.querySelectorAll('.gallery-item'));
+document.querySelectorAll('.gallery-item figcaption').forEach(caption => {
+   if (!caption.textContent.trim()) caption.style.display = 'none';
+});
 const overlay = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightbox-img');
 const lightboxCaption = document.getElementById('lightbox-caption');
