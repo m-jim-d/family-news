@@ -50,19 +50,21 @@
 <li><a data-site="jimandlaurie.50webs" data-path="christmas-card/card-series.html" href="christmas-card/card-series.html">Card Challenges</a></li>
 <li><a data-site="jimandlaurie.50webs" data-path="christmas-card/card-series-2.html" href="christmas-card/card-series-2.html">More Card Challenges</a></li>
 <li><a data-site="jimandlaurie.50webs" data-path="holiday-card-2019/david/pictures.html" href="holiday-card-2019/david/pictures.html">Our David — Memorial Photos (2019)</a></li></ul></details></li></ul></nav>
-<script type="application/json" id="sites">[{"folder":"jimandlaurie.co.nf","origin":"https://jljcd.com/"},{"folder":"jimandlaurie.50webs","origin":"https://newsletters.jljcd.com/"}]</script>
+<script type="application/json" id="sites">[{"folder":"jimandlaurie.co.nf","bases":["https://jljcd.com/","https://m-jim-d.github.io/family-home/"]},{"folder":"jimandlaurie.50webs","bases":["https://newsletters.jljcd.com/","https://m-jim-d.github.io/family-news/"]}]</script>
 <script>(function treeBehavior() {
    const parameters = new URLSearchParams(location.search);
    const embedded = parameters.get('overlay') === '1' && window.parent !== window;
-   const folders = JSON.parse(document.getElementById('sites').textContent);
+   const sites = JSON.parse(document.getElementById('sites').textContent);
    const home = document.body.dataset.site;
-   const local = !folders.some(site => new URL(site.origin).hostname === location.hostname);
+   const homeSite = sites.find(site => site.folder === home);
+   const environment = homeSite.bases.findIndex(base => location.href.startsWith(base));
    const normalize = path => decodeURI(path).replace(/(^|\/)index(?:\.html)?$/, '$1').replace(/\.html$/, '').replace(/\/$/, '');
+   const localBase = site => new URL(`/${site.folder}/`, location.origin);
+   const baseFor = site => new URL(environment === -1 ? localBase(site) : site.bases[environment]);
    let current;
    for (const link of document.querySelectorAll('a[data-path]')) {
-      const site = folders.find(site => site.folder === link.dataset.site);
-      const base = site.folder === home ? new URL('.', location.href) : local ? new URL(`../${site.folder}/`, location.href) : new URL(site.origin);
-      link.href = new URL(link.dataset.path, base).href;
+      const site = sites.find(site => site.folder === link.dataset.site);
+      link.href = new URL(link.dataset.path, baseFor(site)).href;
       if (embedded) link.target = '_parent';
       if (site.folder === home && normalize(link.dataset.path) === normalize(parameters.get('current') || '')) {
          current = link;
